@@ -1,0 +1,553 @@
+<style>
+  #freetrial-root {
+    --red: #e60012;
+    --yellow: #ffe100;
+    --ink: #1a1a1a;
+    --muted: #555;
+    --line: #d8d8d8;
+    --bg: #ffffff;
+    --soft: #f6f6f4;
+    --heading-font: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    --body-font: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+    font-family: var(--body-font);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+  #freetrial-root * { box-sizing: border-box; }
+  #freetrial-root img { max-width: 100%; height: auto; display: block; }
+  #freetrial-root .pc-only { display: none; }
+  #freetrial-root .sp-only { display: block; }
+  #freetrial-root .ft-main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 20px 80px;
+  }
+  #freetrial-root article { display: block; }
+  #freetrial-root section { margin: 0 0 56px; }
+  #freetrial-root .step_h,
+  #freetrial-root .trial_campaign { text-align: center; }
+  #freetrial-root h2 {
+    font-family: var(--heading-font);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    font-size: 30px;
+    margin: 0 0 4px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  #freetrial-root .step_h h3,
+  #freetrial-root .trial_campaign h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.18em;
+    margin: 0 0 18px;
+    position: relative;
+    display: inline-block;
+  }
+  #freetrial-root .step_h h3::before,
+  #freetrial-root .step_h h3::after,
+  #freetrial-root .trial_campaign h3::before,
+  #freetrial-root .trial_campaign h3::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 26px;
+    height: 1px;
+    background: var(--red);
+  }
+  #freetrial-root .step_h h3::before { left: -38px; }
+  #freetrial-root .step_h h3::after  { right: -38px; }
+  #freetrial-root .trial_campaign h3::before { left: -38px; }
+  #freetrial-root .trial_campaign h3::after  { right: -38px; }
+  #freetrial-root .step_h p {
+    color: var(--muted);
+    font-size: 13px;
+    text-align: left;
+    margin: 16px auto 0;
+    max-width: 600px;
+  }
+  #freetrial-root .trial_campaign { margin-bottom: 48px; }
+  #freetrial-root .red_back {
+    background: var(--red);
+    color: #fff;
+    border-radius: 14px;
+    padding: 26px 22px;
+    margin: 22px 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  #freetrial-root .red_back_en { width: 96px; }
+  #freetrial-root .red_back_en img { margin: 0 auto; }
+  #freetrial-root .red_back p {
+    margin: 0;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.9;
+  }
+  #freetrial-root .yellow_back {
+    background: var(--yellow);
+    color: var(--ink);
+    border-radius: 14px;
+    padding: 24px 22px;
+    margin: 0 0 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+  #freetrial-root .yellow_back > p:first-child {
+    margin: 0;
+    font-weight: 800;
+    font-size: 17px;
+  }
+  #freetrial-root .yellow_back_pentgn { width: 280px; align-self: flex-start; }
+  #freetrial-root .yellow_back_pentgn img { margin: 0 auto 0 0; width: 100%; }
+  #freetrial-root .yellow_back_row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  #freetrial-root .yellow_back_row .yellow_back_pentgn { align-self: center; }
+  #freetrial-root .yellow_back_11000 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.5;
+  }
+  #freetrial-root .camp_lets_try {
+    text-align: center;
+    font-weight: 800;
+    font-size: 18px;
+    margin: 22px 0 6px;
+    color: var(--ink);
+  }
+  #freetrial-root .camp_a { width: 42px; margin: 0 auto; }
+  #freetrial-root .step_en { width: 78px; margin: 0 auto 14px; }
+  #freetrial-root .step_h4 {
+    text-align: center;
+    font-size: 21px;
+    font-weight: 800;
+    margin: 0 0 26px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  #freetrial-root .step_h4::after {
+    content: "";
+    display: block;
+    width: 46px;
+    height: 3px;
+    background: var(--red);
+    margin: 12px auto 0;
+    border-radius: 2px;
+  }
+  #freetrial-root .step1_box_outer { display: flex; flex-direction: column; align-items: center; }
+  #freetrial-root .step1_box,
+  #freetrial-root .step_box {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 18px;
+    margin: 0;
+  }
+  #freetrial-root .step1_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  #freetrial-root .step1_box img { margin: 0 auto; }
+  #freetrial-root .step1_box p { margin: 0; }
+  #freetrial-root .step_box { margin-bottom: 18px; }
+  #freetrial-root .pc_step1_flex { width: 100%; }
+  #freetrial-root .pc_step1_left { margin: 0; }
+  #freetrial-root .kome_red {
+    color: var(--red);
+    font-size: 12px;
+    text-align: left;
+    line-height: 1.7;
+    background: #fff5f5;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  #freetrial-root .arrow_black,
+  #freetrial-root .arrow_black_ma { text-align: center; margin: 14px 0; }
+  #freetrial-root .arrow_black img,
+  #freetrial-root .arrow_black_ma img { width: 46px; margin: 0 auto; opacity: 0.8; }
+  #freetrial-root .arrow_black_ma { margin: 22px 0; }
+  #freetrial-root .step_txt { font-weight: 700; text-align: center; margin: 0 0 16px; }
+  #freetrial-root .step2_img { max-width: 420px; margin: 0 auto; }
+  #freetrial-root .l-media {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin: 14px 0 22px;
+    flex-wrap: wrap;
+  }
+  #freetrial-root .l-media__col-main { flex: 1 1 260px; min-width: 240px; }
+  #freetrial-root .l-media__col-sub { flex: 0 0 auto; max-width: 260px; margin: 0 auto; }
+  #freetrial-root .l-media__col-sub img { border-radius: 8px; }
+  #freetrial-root .l-media h3,
+  #freetrial-root .step_box h3,
+  #freetrial-root .l-order__heading {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.6;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+  #freetrial-root .article_heading {
+    border-left: 5px solid var(--red);
+    padding-left: 12px;
+    margin: 28px 0 12px;
+  }
+  #freetrial-root .step_box p { margin: 0 0 10px; }
+  #freetrial-root .l-order__heading {
+    background: var(--soft);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 22px 0 12px;
+  }
+  #freetrial-root .box_attention {
+    border: 1px dashed var(--red);
+    background: #fff7f7;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 10px 0;
+  }
+  #freetrial-root .box_attention p { margin: 0; font-weight: 700; color: var(--red); }
+  #freetrial-root .center-title { text-align: center; margin: 60px 0 40px; }
+  #freetrial-root .center-title strong {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--red);
+    letter-spacing: 0.05em;
+  }
+  #freetrial-root .akerun_movie,
+  #freetrial-root .skytrack_movie { margin: 0 auto; max-width: 100%; }
+  #freetrial-root .akerun_movie video,
+  #freetrial-root .skytrack_movie video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    background: #000;
+  }
+  #freetrial-root .kikugawa_key { margin: 14px 0; }
+  #freetrial-root .kikugawa_key img { margin: 0 auto; border-radius: 8px; }
+  #freetrial-root .step_box .alignnone { margin: 14px auto; border-radius: 8px; }
+
+  @media (min-width: 751px) {
+    #freetrial-root { font-size: 16px; }
+    #freetrial-root .pc-only { display: block; }
+    #freetrial-root .sp-only { display: none; }
+    #freetrial-root .ft-main { max-width: 940px; padding: 48px 32px 120px; }
+    #freetrial-root h2 { font-size: 44px; }
+    #freetrial-root .step_h h3,
+    #freetrial-root .trial_campaign h3 { font-size: 18px; }
+    #freetrial-root .red_back {
+      flex-direction: row;
+      justify-content: center;
+      gap: 28px;
+      padding: 34px 36px;
+    }
+    #freetrial-root .red_back_en { width: 120px; flex: 0 0 auto; }
+    #freetrial-root .red_back p { font-size: 19px; }
+    #freetrial-root .yellow_back { padding: 32px; }
+    #freetrial-root .yellow_back > p:first-child { font-size: 22px; }
+    #freetrial-root .yellow_back_pentgn { width: 340px; align-self: flex-start; }
+    #freetrial-root .camp_lets_try { font-size: 24px; }
+    #freetrial-root .camp_a { width: 50px; }
+    #freetrial-root .step_en { width: 92px; }
+    #freetrial-root .step_h4 { font-size: 28px; }
+    #freetrial-root .step1_box {
+      flex-direction: row;
+      text-align: left;
+      gap: 20px;
+      align-items: center;
+    }
+    #freetrial-root .step1_box img { margin: 0; }
+    #freetrial-root .step1_box p { text-align: left; }
+    #freetrial-root .step_txt { font-size: 18px; }
+  }
+</style>
+
+<div id="freetrial-root">
+
+  <!-- ===== SECTION 1: CAMPAIGN ===== -->
+  <div class="ft-main">
+    <article>
+      <section id="campaign" class="trial_campaign">
+        <h2>CAMPAIGN</h2>
+        <h3>キャンペーン</h3>
+
+        <div class="red_back">
+          <picture class="red_back_en">
+            <source srcset="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/pc_trialcamp_now.png" media="(min-width: 751px)" />
+            <img alt="今だけ" width="120" height="120" src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/sp_trialcamp_now.png" />
+          </picture>
+          <p style="font-size:29px">★下記の店舗は入会金無料キャンペーン中★<br />京都西院店・押上店・菊川店・袋井店・北畠店・新小岩店・横浜東戸塚店</p>
+        </div>
+
+        <div class="yellow_back">
+          <p class="sp-only">無料体験から３日以内に入会すると</p>
+          <p class="pc-only" style="font-size:30px;width:500px;font-weight:800;color:#000">無料体験から３日以内に入会すると</p>
+          <div class="yellow_back_row">
+            <picture class="yellow_back_pentgn">
+              <source srcset="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/pc_trialcamp_half.png" media="(min-width: 751px)" />
+              <img alt="今だけ" width="235" height="70" src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/sp_trialcamp_half.png" />
+            </picture>
+            <p class="yellow_back_11000">★入会金半額キャンペーン中店舗★<br />八潮店・豊四季店</p>
+          </div>
+        </div>
+
+        <p class="camp_lets_try">無料体験　1枠50分でまずお試しください！</p>
+        <picture class="camp_a">
+          <source srcset="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/pc_trialcamp_a.png" media="(min-width: 751px)" />
+          <img alt="矢印" width="50" height="75" src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/sp_trialcamp_a.png" />
+        </picture>
+      </section>
+
+      <!-- ===== SECTION: FREE TRIAL HEADER ===== -->
+      <section class="step_h">
+        <h2 class="sp-only">FREE TRIAL ／<br />RESERVE</h2>
+        <h2 class="pc-only">FREE TRIAL／RESERVE</h2>
+        <h3>無料体験のご予約</h3>
+        <p class="sp-only">※無料体験をいただくには、まず会員登録が必要となります。無料体験のご予約から、入店までの流れをご説明いたします。</p>
+        <p class="pc-only">※無料体験をいただくには、まず会員登録が必要となります。<br />無料体験のご予約から、入店までの流れをご説明いたします。</p>
+      </section>
+
+      <!-- ===== STEP 1 ===== -->
+      <section class="step1">
+        <picture class="step_en">
+          <source srcset="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/pc_trial_step1.png" media="(min-width: 751px)" />
+          <img alt="ステップ1" width="92" height="92" src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/sp_trial_step1.png" />
+        </picture>
+        <h4 class="step_h4">無料体験予約・会員情報登録</h4>
+        <div class="step1_box_outer">
+
+          <div class="step1_box">
+            <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/tri1.png" alt="手順1" width="60" height="60" />
+            <div class="pc_step1_flex">
+              <p class="pc_step1_left">予約サイトにアクセスし、ご希望の日にち、お時間を選択してください。<br />※1枠50分を無料でご利用いただけます。</p>
+            </div>
+          </div>
+
+          <div class="arrow_black">
+            <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/arrow_black.png" alt="矢印" width="70" height="30" />
+          </div>
+
+          <div class="step1_box">
+            <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/tri2.png" alt="手順2" width="60" height="60" />
+            <p>お好きな打席を選択し、「無料体験予約を申し込む」をタップ。</p>
+          </div>
+
+          <div class="arrow_black">
+            <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/arrow_black.png" alt="矢印" width="70" height="30" />
+          </div>
+
+          <div class="step1_box">
+            <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/tri3.png" alt="手順3" width="60" height="60" />
+            <p>あなたの情報を入力、内容を確認し、登録を行ってください。</p>
+            <p class="kome_red">※会員登録をするメールアドレスは、PCメールアドレスをご使用ください。<br />※携帯のキャリアメールアドレス（ドコモ、au、ソフトバンクなど）で登録しますと、返信メールが届きません！</p>
+          </div>
+
+          <div class="arrow_black">
+            <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/arrow_black.png" alt="矢印" width="70" height="30" />
+          </div>
+
+          <div class="step1_box">
+            <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/tri4.png" alt="手順4" width="60" height="60" />
+            <p>登録後、2通のメールが届きます。</p>
+            <p>（菊川・京都西院・横浜東戸塚店はQRコードでの開錠のため以下不要です）</p>
+            <p>①会員登録認証メール<br />　→URLをクリックし、メール認証を行うと会員登録がすべて完了します。<br />②「Akerun」から、パスワード設定のためのメール<br />　→施設のご利用には「Akerun」という入口解錠のためのアプリが必要となります。<br />　　必ず下記Step2をご覧ください！！</p>
+          </div>
+
+        </div>
+      </section>
+    </article>
+
+    <div class="arrow_black_ma">
+      <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/arrow_black.png" alt="矢印" width="70" height="30" />
+    </div>
+
+    <!-- ===== STEP 2 ===== -->
+    <section class="step2">
+      <picture class="step_en">
+        <source srcset="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/pc_trial_step2.png" media="(min-width: 751px)" />
+        <img alt="ステップ2" width="92" height="92" src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/sp_trial_step2.png" />
+      </picture>
+      <h4 class="step_h4 sp-only">入口解錠アプリ「Akerun」への登録<br />・設定</h4>
+      <h4 class="step_h4 pc-only">入口解錠アプリ「Akerun」への登録・設定</h4>
+
+      <div class="step_box">
+        <p class="step_txt">「Akerun」から、パスワード設定のためのメールが届きます。</p>
+        <picture class="step2_img">
+          <source srcset="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/pc_trial_step2_img.png" media="(min-width: 751px)" />
+          <img alt="ステップ2" width="603" height="870" src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/sp_trial_step2_img.png" />
+        </picture>
+      </div>
+
+      <div class="step_box">
+        <div class="l-media">
+          <div class="l-media__col-main">
+            <h3>①メールに記載のURLから、Akerunアカウントのパスワードを設定します</h3>
+            <p>このパスワードは、入退室の際に使用するAkerunアプリのログインに使用します。</p>
+            <div class="box_attention"><p>URLの有効期限は24時間です。</p></div>
+            <p>有効期限を過ぎてしまった場合は、下記の手順でパスワードの設定が可能です。</p>
+          </div>
+          <div class="l-media__col-sub">
+            <img src="https://support.akerun.com/hc/article_attachments/18580985007129" alt="hacomono_3.jpg" />
+          </div>
+        </div>
+
+        <h3 class="article_heading">URLの有効期限が切れてしまった場合のパスワード設定方法</h3>
+        <p>まずはアプリをダウンロードし、「アプリを起動 ＞ akerunを選択 ＞ ログイン画面」この画面で下記の操作を行います。</p>
+        <h3><img src="https://support.akerun.com/hc/article_attachments/18580963132441" alt="hacomono_4.jpg" /></h3>
+
+        <div class="l-media__col-main">
+          <h3>②Akerunアプリをダウンロードします</h3>
+          <p>メールに記載のURLから、お使いのスマートフォンの機種に対応したアプリをダウンロードしてください。</p>
+          <div class="box_attention">
+            <p>iPhoneご利用の方 → <strong>iOS</strong><br />Androidスマートフォンご利用の方 → <strong>Android</strong></p>
+          </div>
+          <p>※タブレット端末は非対応です</p>
+        </div>
+        <div class="l-media__col-sub">
+          <img src="https://support.akerun.com/hc/article_attachments/7058627474713/hacomono_6-min.jpg" alt="hacomono_6-min.jpg" />
+        </div>
+
+        <h3>③Akerunアプリにログインします<br />※「メールアドレスでログイン」を選択してログインします。</h3>
+        <p>新規会員登録時に設定した「メールアドレス」とAkerunアカウントの「パスワード」を入力してログインします。</p>
+        <picture class="step2_img">
+          <img src="https://support.akerun.com/hc/article_attachments/18580963354521" alt="hacomono_7.jpg" />
+        </picture>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== CENTER TITLE ===== -->
+  <div class="center-title">
+    <h3><strong>★★入室時の鍵の開け方★★</strong></h3>
+  </div>
+
+  <!-- ===== KEY UNLOCK INSTRUCTIONS ===== -->
+  <div class="ft-main">
+    <article>
+      <section class="step2">
+        <div class="step_box">
+
+          <p class="l-order__heading"><span>①スマートフォンの「Bluetooth」をONにします</span></p>
+          <div class="l-media">
+            <div class="l-media__col-main">
+              <p>Androidをご利用の場合は「位置情報」もONにしてください。</p>
+            </div>
+            <div class="l-media__col-sub">
+              <img src="https://support.akerun.com/hc/article_attachments/7059331799065/hacomono_8-min.jpg" alt="hacomono_8-min.jpg" />
+            </div>
+          </div>
+
+          <p class="l-order__heading"><span>②操作する「ドア」を選択します</span></p>
+          <div class="l-media">
+            <div class="l-media__col-sub">
+              <img src="https://support.akerun.com/hc/article_attachments/18580985221657" alt="hacomono_9.jpg" />
+            </div>
+          </div>
+
+          <p class="l-order__heading"><span>③入室する扉の前で、「開ける／閉める」ボタンをタップします</span></p>
+          <div class="l-media">
+            <div class="l-media__col-main">
+              <p>タップすると、Akerun Proとの通信が開始されます。<br />「開ける」ボタンが表示されたら解錠可能です。</p>
+            </div>
+            <div class="l-media__col-sub">
+              <img src="https://support.akerun.com/hc/article_attachments/18580985420569" alt="hacomono_10.jpg" />
+            </div>
+          </div>
+
+          <p class="l-order__heading"><span>④「開ける」ボタンをタップすると、鍵が解錠されます</span></p>
+          <div class="l-media">
+            <div class="l-media__col-sub">
+              <img src="https://support.akerun.com/hc/article_attachments/18580963660441" alt="hacomono_11.jpg" />
+            </div>
+          </div>
+
+        </div>
+
+        <div class="step_box">
+          <img class="alignnone" src="https://skimagolf.com/wp-content/uploads/2024/09/菊川京都西院店開錠方法.jpeg" alt="" width="1123" height="794" />
+        </div>
+        <div>
+          <img class="alignnone" src="https://skimagolf.com/wp-content/uploads/2024/09/東戸塚店開錠方法.jpeg" alt="" width="1123" height="794" />
+        </div>
+        <div class="step_box">
+          <div class="kikugawa_key">
+            <picture>
+              <source srcset="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/pc_kikugawa_key.png" media="(min-width: 751px)" />
+              <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/pc_kikugawa_key.png" alt="菊川店 鍵の開け方" />
+            </picture>
+          </div>
+        </div>
+      </section>
+
+      <div class="arrow_black_ma">
+        <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/arrow_black.png" alt="矢印" width="70" height="30" />
+      </div>
+
+      <!-- ===== STEP 3 ===== -->
+      <section class="step3">
+        <picture class="step_en">
+          <source srcset="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/pc_trial_step3.png" media="(min-width: 751px)" />
+          <img alt="ステップ3" width="92" height="92" src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/sp_trial_step3.png" />
+        </picture>
+        <h4 id="akerun" class="step_h4">利用日当日の入店（解錠）方法</h4>
+        <div class="step_box">
+          <p class="step_txt">※鍵は予約時間の２０分前になりますと、アプリ上に届きます。</p>
+          <div class="akerun_movie">
+            <video
+              poster="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/pc_trial_akerun.png"
+              autoplay loop muted controls
+              width="940" height="529"
+              src="https://skimagolf.com/wp-content/themes/skimagolf_theme/video/akerun.mp4">
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <div class="arrow_black_ma">
+        <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/arrow_black.png" alt="矢印" width="70" height="30" />
+      </div>
+
+      <!-- ===== STEP 4 ===== -->
+      <section class="step4">
+        <picture class="step_en">
+          <source srcset="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/pc_trial_step4.png" media="(min-width: 751px)" />
+          <img src="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/sp_trial_step4.png" alt="ステップ4" width="92" height="92" />
+        </picture>
+        <h4 id="skytrack" class="step_h4">スカイトラックの基本操作方法</h4>
+        <div class="step_box">
+          <div class="skytrack_movie">
+            <video
+              src="https://skimagolf.com/wp-content/themes/skimagolf_theme/video/skytrack-v.mp4"
+              poster="https://skimagolf.com/wp-content/themes/skimagolf_theme/images/freetrial/skytrack-v.png"
+              autoplay loop muted controls
+              width="940" height="529">
+            </video>
+          </div>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+</div>
